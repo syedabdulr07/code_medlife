@@ -1,15 +1,36 @@
-pipeline {
-    agent any
-pipeline {
-    agent any
+pipeline{
+    agent any 
+    environment {
+    AWS_DEFAULT_REGION = "us-east-1"
+    THE_BUTLER_SAYS_SO = credentials('jenkins-aws')
+    }
     stages {
-        stage('deploy') {
+        stage ('Build'){
             steps {
-              sh "aws configure set region $us-east-1" 
-              sh "aws configure set aws_access_key_id $AKIAYB2ZEDMKOH7IPA45"  
-              sh "aws configure set aws_secret_access_key $Bon0ZpsJ9GLyd85JGMjHu9LUYVYJzQGDir3y4Lbn"
-              sh "aws s3 cp Code/index.html s3://maskan-bucket1"
+                echo "Building stage"
             }
+        }
+        stage ('Test'){
+            steps {
+                echo "Testing stage"
+
+            }
+        }
+        stage ('Deploy to S3'){ 
+            steps{ 
+                echo "Deploying" 
+                sh ' aws s3 cp ./index.html s3://maskan-bucket1 '
+            } 
+        }
+
+    }
+
+    post{
+        success {
+            echo "success"
+        }
+        failure {
+            echo "failure"
         }
     }
 }
