@@ -8,8 +8,7 @@ pipeline{
             steps {
                 script {
                     git branch:"${master}",
-                        credentialsId: "${git_credential}",
-                        url: "https://github.com/syedabdulr07/code_medlife.git"
+                        credential url: 'https://github.com/syedabdulr07/code_medlife.git'
                     commitId = sh (script: 'git rev-parse --short HEAD ${GIT_COMMIT}', returnStdout: true).trim()           
                 }
             }
