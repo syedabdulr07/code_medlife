@@ -1,8 +1,8 @@
 pipeline{
     agent any 
-    environment {
-    AWS_DEFAULT_REGION = "us-east-2"
-    }
+    // environment {
+    // AWS_DEFAULT_REGION = "us-east-2"
+    // }
     stages {
         stage ('checkout'){
             steps {
