@@ -28,9 +28,9 @@ pipeline{
         stage ('Deploy to S3'){ 
             steps{ 
                 echo "Deploying" 
-                sh "aws configure set region $us-east-2" 
-                sh "aws configure set aws_access_key_id $AKIAYB2ZEDMKOH7IPA45"  
-                sh "aws configure set aws_secret_access_key $Bon0ZpsJ9GLyd85JGMjHu9LUYVYJzQGDir3y4Lbn"
+                sh "aws configure set region us-east-2" 
+                sh "aws configure set aws_access_key_id AKIAYB2ZEDMKOH7IPA45"  
+                sh "aws configure set aws_secret_access_key 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"
                 sh ' aws s3 cp ./index.html s3://maskan-bucket1 '
             } 
         }
